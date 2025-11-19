@@ -71,6 +71,11 @@ app.patch("/posts/:id", (req, res) => {
     res.send("Updated successfully");
 });
 
+app.get("/posts/:id/edit", (req, res) =>{
+    let {id} =req.params;
+    let post = posts.find((e) => id === e.id);
+    res.render("show.ejs", {post});
+})
 
 app.listen(port,() =>{
     console.log("lisetening to signal");
