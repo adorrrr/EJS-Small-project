@@ -77,8 +77,8 @@ app.patch("/posts/:id", (req, res) => {
 
 app.get("/posts/:id/edit", (req, res) =>{
     let {id} =req.params;
-    let post = posts.find((e) => id === e.id);
-    res.render("edit.ejs", {post});
+    posts = posts.filter((e) => id !== e.id);
+    res.redirect("/posts");
 })
 
 app.listen(port,() =>{
